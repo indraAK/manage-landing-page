@@ -1,0 +1,70 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+html {
+   box-sizing: border-box;
+   font-size: 62.5%; // 1rem = 10px
+   height: 100%;
+   overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+   box-sizing: inherit;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   font-family: "Be Vietnam", sans-serif;
+   font-size: 1.6rem;
+   font-weight: map-get($font-weights, "regular");
+   text-size-adjust: 100%;
+   line-height: 1.6;
+   background-color: #fff;
+   overflow: hidden;
+}
+
+ul {
+   list-style-type: none;
+}
+
+img {
+   display: block;
+   max-width: 100%;
+   height: auto;
+   user-select: none;
+}
+
+a {
+   text-decoration: none;
+}
+
+p,
+blockquote {
+   line-height: 1.8;
+
+   @include media-breakpoint-up(map-get($breakpoints, "md")) {
+      line-height: inherit;
+   }
+}
+
+.container {
+   width: 100%;
+   margin: 0 auto;
+   padding: 0 1.2rem;
+
+   @include media-breakpoint-up(map-get($breakpoints, "sm")) {
+      max-width: 54rem;
+   }
+   @include media-breakpoint-up(map-get($breakpoints, "md")) {
+      max-width: 72rem;
+   }
+   @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+      max-width: 96rem;
+   }
+   @include media-breakpoint-up(map-get($breakpoints, "xl")) {
+      max-width: 114rem;
+   }
+}

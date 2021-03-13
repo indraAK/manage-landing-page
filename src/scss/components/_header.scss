@@ -1,0 +1,135 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   min-height: 7rem;
+   display: flex;
+   align-items: center;
+   z-index: 1000;
+
+   @include media-breakpoint-up(map-get($breakpoints, "md")) {
+      min-height: 8.5rem;
+   }
+
+   &.bg-white {
+      background-color: #fff;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+         0 2px 6px 2px rgba(0, 0, 0, 0.1);
+      transition: 300ms ease;
+   }
+
+   .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-brand {
+         img {
+            width: 12rem;
+
+            @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+               width: initial;
+            }
+         }
+      }
+
+      &-nav {
+         display: none;
+         line-height: 0;
+
+         @include media-breakpoint-up(map-get($breakpoints, "md")) {
+            display: flex;
+            align-items: center;
+         }
+
+         li {
+            margin: 0 1.5rem;
+         }
+      }
+
+      &-cta {
+         display: none;
+
+         @include media-breakpoint-up(map-get($breakpoints, "md")) {
+            display: inline-block;
+         }
+      }
+
+      .nav-link {
+         color: $dark-blue;
+         font-size: 1.4rem;
+         font-weight: map-get($font-weights, "medium");
+         transition: 0.2s;
+
+         &:hover {
+            color: $dark-grayish-blue;
+         }
+      }
+
+      .toggle-menu {
+         width: 2.5rem;
+         height: 2.3rem;
+         display: flex;
+         align-items: center;
+         cursor: pointer;
+
+         @include media-breakpoint-up(map-get($breakpoints, "md")) {
+            display: none;
+         }
+
+         &.active {
+            .stripe {
+               background-color: transparent;
+               transform: rotate(360deg);
+
+               &::before,
+               &::after {
+                  top: 0;
+               }
+
+               &::before {
+                  transform: rotate(-45deg);
+               }
+
+               &::after {
+                  transform: rotate(45deg);
+               }
+            }
+         }
+
+         .stripe {
+            flex: 1;
+            display: block;
+            width: 100%;
+            height: 0.3rem;
+            background-color: #242d52;
+            position: relative;
+            transition: 300ms ease-in;
+
+            &::before,
+            &::after {
+               content: "";
+               display: block;
+               width: 100%;
+               height: 0.3rem;
+               background-color: #242d52;
+               position: absolute;
+               left: 0;
+               transition: transform 300ms ease-in, top 300ms ease-in;
+            }
+
+            &::before {
+               top: -0.7rem;
+            }
+
+            &::after {
+               top: 0.7rem;
+            }
+         }
+      }
+   }
+}

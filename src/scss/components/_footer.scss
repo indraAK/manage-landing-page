@@ -1,0 +1,188 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+footer {
+   background-color: $very-dark-blue;
+   padding: 7rem 0;
+
+   .footer-row {
+      display: grid;
+      grid-template-columns: 2fr 2fr 3fr;
+      column-gap: 2rem;
+      position: relative;
+
+      @media screen and (max-width: map-get($breakpoints, "md")) {
+         grid-template-columns: 1fr;
+         width: 100%;
+         max-width: 35rem;
+         margin: 0 auto;
+         row-gap: 5rem;
+      }
+   }
+
+   .footer-col-1 {
+      display: grid;
+      align-content: space-between;
+
+      @media screen and (max-width: map-get($breakpoints, "md")) {
+         order: 3;
+         justify-items: center;
+      }
+
+      .logo {
+         @media screen and (max-width: map-get($breakpoints, "md")) {
+            margin-bottom: 3rem;
+         }
+      }
+
+      .social-list {
+         display: flex;
+         align-items: center;
+
+         @media screen and (max-width: map-get($breakpoints, "md")) {
+            order: -1;
+            margin-bottom: 4rem;
+         }
+      }
+
+      .social-item {
+         @media screen and (max-width: map-get($breakpoints, "md")) {
+            margin: 0 2rem;
+         }
+      }
+
+      .social-item:not(:last-child) {
+         margin-right: 1.25rem;
+
+         @media screen and (max-width: map-get($breakpoints, "md")) {
+            margin-right: 0;
+         }
+      }
+
+      .social-link .fab {
+         color: $vary-light-gray;
+         font-size: 2rem;
+         transition: color 200ms ease-in-out;
+
+         &:hover {
+            color: $bright-red;
+         }
+      }
+   }
+
+   .footer-col-2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      @media screen and (max-width: map-get($breakpoints, "md")) {
+         order: 2;
+         width: 100%;
+         max-width: 30rem;
+         margin: 0 auto;
+      }
+
+      .links {
+         display: grid;
+         row-gap: 1rem;
+
+         a {
+            color: $very-pale-red;
+            font-size: 1.4rem;
+            font-weight: map-get($font-weights, "medium");
+            transition: color 200ms ease-in-out;
+
+            &:hover {
+               color: $bright-red;
+            }
+         }
+      }
+   }
+
+   .footer-col-3 {
+      justify-self: end;
+      display: grid;
+      justify-items: end;
+      align-content: space-between;
+
+      @media screen and (max-width: map-get($breakpoints, "md")) {
+         justify-self: initial;
+      }
+
+      .form {
+         display: flex;
+
+         @media screen and (max-width: map-get($breakpoints, "md")) {
+            width: 100%;
+            margin: 0 auto;
+         }
+
+         &-group {
+            flex: 1;
+            margin-right: 1rem;
+            position: relative;
+         }
+
+         &-control {
+            background-color: $vary-light-gray;
+            display: block;
+            width: 100%;
+            appearance: none;
+            outline: 0;
+            border: 0.2rem solid transparent;
+            border-radius: 5rem;
+            padding: 1rem 1.5rem;
+            font-family: inherit;
+            font-size: 1.4rem;
+            line-height: 1;
+            color: $dark-blue;
+            caret-color: $bright-red;
+
+            &::placeholder {
+               color: $dark-grayish-blue;
+            }
+
+            &.invalid {
+               border-color: $bright-red;
+            }
+
+            &.invalid-input {
+               color: $bright-red;
+            }
+         }
+
+         .btn-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
+
+            &:hover {
+               background-color: #ff7a59;
+               opacity: 1;
+            }
+         }
+
+         .invalid-feedback {
+            position: absolute;
+            bottom: 0;
+            left: 1.5rem;
+            transform: translateY(2.3rem);
+            color: $bright-red;
+         }
+      }
+
+      .copyright {
+         color: $dark-grayish-blue;
+         font-size: 1.3rem;
+
+         @media screen and (max-width: map-get($breakpoints, "md")) {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            transform: translateY(4rem);
+         }
+      }
+   }
+}

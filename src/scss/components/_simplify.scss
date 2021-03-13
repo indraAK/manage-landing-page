@@ -1,0 +1,65 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.simplify {
+   background-color: $bright-red;
+   min-height: 32rem;
+   padding: 5rem 0;
+   display: flex;
+   align-items: center;
+   margin-top: 5rem;
+   background-image: url("../images/bg-simplify-section-mobile.svg");
+   background-repeat: no-repeat;
+   background-position: left;
+
+   @include media-breakpoint-up(map-get($breakpoints, "md")) {
+      margin-top: 10rem;
+      background-image: url("../images/bg-simplify-section-desktop.svg");
+      background-position: center;
+      background-size: cover;
+   }
+
+   @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+      min-height: 25rem;
+   }
+
+   .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @include media-breakpoint-up(map-get($breakpoints, "md")) {
+         flex-direction: row;
+         justify-content: space-between;
+      }
+   }
+
+   h2 {
+      max-width: 50rem;
+      text-align: center;
+      margin: 0;
+
+      @include media-breakpoint-up(map-get($breakpoints, "sm")) {
+         text-align: left;
+      }
+   }
+
+   .btn-light {
+      @include button;
+      background-color: $vary-light-gray;
+      color: $bright-red;
+      padding: 1.5rem 2.5rem;
+      border-radius: 5rem;
+      font-weight: map-get($font-weights, "bold");
+      margin-top: 3rem;
+
+      @include media-breakpoint-up(map-get($breakpoints, "md")) {
+         margin-top: 0;
+      }
+
+      &:hover {
+         background-color: $very-pale-red;
+      }
+   }
+}

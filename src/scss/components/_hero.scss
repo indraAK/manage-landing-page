@@ -1,0 +1,137 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.hero {
+   min-height: 100vh;
+   padding: 5rem 0 2rem;
+   position: relative;
+   overflow: hidden;
+
+   &-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      margin-top: 5rem;
+
+      @media screen and (min-device-height: 1024px) {
+         margin-top: 0;
+      }
+
+      @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: center;
+         margin-top: 0;
+      }
+
+      & > * {
+         @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+            flex: 1;
+         }
+      }
+   }
+
+   .intro {
+      text-align: center;
+      margin: 3rem auto 0;
+      width: 100%;
+
+      @include media-breakpoint-up(map-get($breakpoints, "md")) {
+         max-width: 50rem;
+      }
+
+      @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+         text-align: left;
+         max-width: 50rem;
+      }
+
+      h1 {
+         color: $dark-blue;
+         font-size: 3.2rem;
+         line-height: 1.4;
+
+         @include media-breakpoint-up(map-get($breakpoints, "md")) {
+            font-size: 4rem;
+            line-height: 1.5;
+         }
+
+         @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+            font-size: 5rem;
+            line-height: 1.2;
+         }
+      }
+
+      p {
+         max-width: 35rem;
+         margin: 2rem auto 4rem;
+
+         @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+            margin: 3rem 0 4rem;
+         }
+      }
+   }
+
+   .illustration {
+      img {
+         max-width: 35rem;
+         margin: 0 auto;
+
+         @include media-breakpoint-up(map-get($breakpoints, "md")) {
+            max-width: 45rem;
+         }
+
+         @include media-breakpoint-up(map-get($breakpoints, "xxl")) {
+            max-width: 55rem;
+         }
+      }
+   }
+
+   .bg-tablet {
+      position: absolute;
+      top: calc(-10rem + 10vh);
+      right: calc(-10rem + 10vh);
+      width: 100vw;
+      height: 100vh;
+      background-image: url(../images/bg-tablet-pattern.svg);
+      background-repeat: no-repeat;
+      background-size: 120vmin;
+      background-position: right calc(-20rem + 10vw) top calc(-20rem + 10vh);
+      z-index: -1;
+
+      @media screen and (max-width: 1200px){
+         max-width: 660px;
+         background-size: 100vmin;
+         background-position: right calc(-30rem + 10vmax) top calc(-22rem + 10vh);
+      }
+
+      @media screen and (max-width: 992px){
+         max-width: 100%;
+         background-size: 100vmin;
+         background-position: right calc(-15rem + 10vmax) top calc(-27rem + 10vh);
+      }
+
+      @media screen and (max-width: 768px){
+         background-size: cover;
+         background-position: right calc(-25rem + 10vmax) top calc(-30rem + 10vh);
+      }
+
+      @media screen and (max-width: 768px){
+         background-size: 100vmax;
+      }
+
+      @media screen and (max-width: 414px){
+         background-size: 65vmax;
+         background-position: right calc(-15rem + 10vmax) top calc(-10rem + 10vh);
+      }
+
+      @include media-breakpoint-up(map-get($breakpoints, "xl")) {
+         max-width: 70vmax;
+         background-position: right calc(-35rem + 10vw) top calc(-35rem + 15vh);
+      }
+
+      @media screen and (min-device-height: 1024px) {
+         background-size: 80vmax
+      }
+   }
+}

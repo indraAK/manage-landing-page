@@ -1,0 +1,149 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.about {
+   padding: 5rem 0;
+   position: relative;
+
+   @include media-breakpoint-up(map-get($breakpoints, "md")) {
+      margin-top: 5rem;
+   }
+
+   @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+      margin-top: 0;
+   }
+
+   @media screen and (min-device-height: 1024px) {
+      padding: 0 0 5rem;
+   }
+
+   &-wrapper {
+      @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         column-gap: 4rem;
+      }
+   }
+
+   &-manage {
+      text-align: center;
+      max-width: 45rem;
+      margin: 0 auto;
+
+      @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+         text-align: left;
+         max-width: 60rem;
+         margin: 0;
+      }
+
+      .heading-2 {
+         @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+            margin: 0;
+         }
+      }
+
+      p {
+         margin-top: 2rem;
+
+         @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+            max-width: 40rem;
+         }
+      }
+   }
+
+   .features {
+      margin-top: 5rem;
+      display: grid;
+      row-gap: 4rem;
+      counter-reset: feature-counter;
+
+      @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+         margin-top: 0;
+      }
+   }
+
+   .feature {
+      position: relative;
+
+      &-name {
+         font-size: 1.5rem;
+         font-weight: map-get($font-weights, "bold");
+         color: $dark-blue;
+         line-height: 1;
+         padding: 1.2rem 0 1.2rem 7rem;
+         position: relative;
+
+         @include media-breakpoint-up(map-get($breakpoints, "xs")) {
+            font-size: 1.7rem;
+         }
+
+         &::before {
+            counter-increment: feature-counter;
+            content: "0" counter(feature-counter);
+            background-color: $bright-red;
+            color: $very-pale-red;
+            height: 100%;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 2rem;
+            border-radius: 2rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+         }
+
+         &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            background-color: $very-pale-red;
+            border-radius: 2rem 0 0 2rem;
+            z-index: -1;
+
+            @include media-breakpoint-up(map-get($breakpoints, "xs")) {
+               width: 100%;
+               border-radius: 2rem;
+            }
+
+            @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+               display: none;
+            }
+         }
+      }
+
+      &-description {
+         margin-top: 1rem;
+
+         @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+            padding-left: 7rem;
+         }
+      }
+   }
+
+   .tablet-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(40vw) translateY(-30vh);
+      width: 75vw;
+      z-index: -1;
+
+      @include media-breakpoint-up(map-get($breakpoints, "sm")) {
+         display: none;
+      }
+
+      @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+         display: block;
+         bottom: 0;
+         left: 0;
+         width: min(100%, 65rem);
+         transform: translateX(-20vw) translateY(40rem);
+      }
+   }
+}

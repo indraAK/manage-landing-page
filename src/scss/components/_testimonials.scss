@@ -1,0 +1,101 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.testimonials {
+   padding: 5rem 0;
+   margin-top: 2rem;
+   overflow: hidden;
+
+   @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+      margin-top: 8rem;
+   }
+
+   @media screen and (min-device-height: 1024px) {
+      margin-top: 6rem;
+   }
+
+   .heading-2 {
+      text-align: center;
+   }
+
+   .swiper-container {
+      overflow: visible;
+      margin-top: 10rem;
+   }
+
+   .testimonial {
+      position: relative;
+      background-color: $vary-light-gray;
+      padding: 4rem 3rem 3rem;
+      min-height: 20rem;
+      text-align: center;
+
+      @include media-breakpoint-up(map-get($breakpoints, "xs")) {
+         min-height: 17rem;
+      }
+
+      @include media-breakpoint-up(map-get($breakpoints, "sm")) {
+         min-height: 15rem;
+      }
+
+      @include media-breakpoint-up(map-get($breakpoints, "md")) {
+         min-height: 18rem;
+      }
+
+      @include media-breakpoint-up(map-get($breakpoints, "lg")) {
+         min-height: 21rem;
+         padding: 4rem 2rem 3rem;
+      }
+
+      @include media-breakpoint-up(map-get($breakpoints, "xl")) {
+         min-height: 18rem;
+         padding: 4rem 3rem;
+      }
+
+      img {
+         max-width: 7rem;
+         position: absolute;
+         top: 0;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+
+      figcaption {
+         margin-top: 1.5rem;
+      }
+
+      cite {
+         font-style: normal;
+         color: $dark-blue;
+         font-weight: map-get($font-weights, "bold");
+      }
+
+      blockquote {
+         color: $dark-grayish-blue;
+         margin-top: 1.5rem;
+      }
+   }
+
+   .swiper-container-horizontal > .swiper-pagination-bullets {
+      bottom: -4rem;
+   }
+
+   .swiper-pagination-bullet {
+      background: #fff;
+      border: 1px solid $bright-red;
+      opacity: 1;
+   }
+
+   .swiper-pagination-bullet-active {
+      background: $bright-red;
+   }
+
+   .cta {
+      text-align: center;
+      margin-top: 10rem;
+
+      .btn {
+         padding: 1.5rem 2.5rem;
+      }
+   }
+}
